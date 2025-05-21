@@ -175,12 +175,11 @@ header {
     transition: background-color var(--transition-speed), border-color var(--transition-speed);
 }
 
-/* Header Container - Make it a flex container */
 header .container {
     display: flex;
-    justify-content: space-between; /* Space out logo, nav, and toggle/menu */
+    justify-content: space-between;
     align-items: center;
-    flex-wrap: nowrap; /* Prevent wrapping unless specifically allowed by media query */
+    flex-wrap: wrap; /* Allow wrapping for mobile */
 }
 
 .logo-area {
@@ -209,10 +208,6 @@ header .container {
 }
 
 /* Desktop Navigation */
-.desktop-nav {
-    display: block; /* Default to block for desktop */
-}
-
 .desktop-nav ul {
     list-style: none;
     margin: 0;
@@ -291,14 +286,12 @@ header .container {
 
 /* Hamburger Menu Toggle */
 .menu-toggle {
-    display: none; /* Hidden on desktop, shown on mobile */
+    display: none; /* Hidden on desktop */
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
     height: 21px;
     cursor: pointer;
-    margin-left: 15px; /* Space from theme toggle (or logo on mobile) */
-    flex-shrink: 0; /* Prevent it from shrinking */
 }
 
 .menu-toggle span {
@@ -323,39 +316,41 @@ header .container {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* --- Theme Toggle Button --- */
+/* --- Theme Toggle Button (FIXED TO LOWER RIGHT) --- */
 .theme-toggle {
     background: none;
     border: none;
     font-size: 1.5em;
     cursor: pointer;
-    /* Removed fixed positioning as it's now inside a flex container */
-    /* top, right, z-index are no longer needed here */
-    display: none; /* Hidden by default for desktop, will be shown in media query */
 
-    /* STYLING FOR THE BUTTON ITSELF (now as part of flex layout) */
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
+    /* FIXED POSITIONING TO LOWER RIGHT */
+    position: fixed;
+    bottom: 20px;   /* 20px from the bottom edge of the viewport */
+    right: 20px;    /* 20px from the right edge of the viewport */
+    z-index: 1001;  /* Ensures it's above other content */
+
+    /* STYLING FOR THE BUTTON ITSELF */
+    background-color: rgba(255, 255, 255, 0.7); /* Light translucent background for visibility */
+    border-radius: 50%; /* Makes the button perfectly round */
+    width: 48px; /* Fixed width for the round button */
+    height: 48px; /* Fixed height for the round button */
     display: flex; /* Use flexbox to perfectly center the icon inside the button */
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    flex-shrink: 0; /* Prevent it from shrinking in flex container */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transitions */
 }
 
 .theme-toggle:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    background-color: rgba(255, 255, 255, 0.9);
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Enhance shadow on hover */
+    background-color: rgba(255, 255, 255, 0.9); /* Less translucent on hover */
 }
 
 .theme-toggle .icon-light,
 .theme-toggle .icon-dark {
     display: none;
-    font-size: 1.4em;
+    font-size: 1.4em; /* Adjust icon size slightly for better fit in the round button */
 }
 
 body:not(.dark-mode) .theme-toggle .icon-light {
@@ -368,8 +363,8 @@ body.dark-mode .theme-toggle .icon-dark {
 
 /* Dark mode specific styling for the button */
 body.dark-mode .theme-toggle {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: var(--color-text-dark);
+    background-color: rgba(0, 0, 0, 0.7); /* Dark translucent background in dark mode */
+    color: var(--color-text-dark); /* Ensure icon color adjusts */
 }
 
 body.dark-mode .theme-toggle:hover {
@@ -607,14 +602,8 @@ footer p {
     .menu-toggle {
         display: flex; /* Show hamburger icon */
     }
-    .theme-toggle {
-        display: flex; /* Show theme toggle on smaller screens */
-        position: static; /* Ensure it behaves normally within the flex container */
-        margin-left: auto; /* Push it to the right within the header container */
-    }
     header .container {
-        justify-content: space-between; /* Space out logo, toggle, and menu */
-        flex-wrap: nowrap; /* Keep items on one line if possible */
+        justify-content: space-between; /* Space out logo and toggle */
     }
     .site-title {
         font-size: 1.5em;
@@ -681,17 +670,13 @@ footer p {
         flex-direction: column;
         gap: 10px;
     }
-    /* Responsive adjustments for the button and menu toggle positioning within header */
+    /* Smaller button on very small screens */
     .theme-toggle {
-        width: 40px; /* Slightly smaller button on mobile */
+        width: 40px;
         height: 40px;
-        font-size: 1.2em; /* Smaller icon on mobile */
-        /* Use margin-left to push it to the right, creating space for the menu toggle */
-        margin-left: auto; /* Pushes it next to the menu toggle */
-        margin-right: 10px; /* Small space before the hamburger */
-    }
-    .menu-toggle {
-        margin-left: 0; /* Reset margin from the previous rule if it was applied */
+        font-size: 1.2em;
+        bottom: 15px; /* Slightly less from bottom for smaller screens */
+        right: 15px; /* Slightly less from right for smaller screens */
     }
     .university-logo {
         height: 35px;
