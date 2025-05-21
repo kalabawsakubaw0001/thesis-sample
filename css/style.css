@@ -27,8 +27,18 @@ body {
     padding: 0;
     line-height: 1.6;
     color: var(--color-text-light);
-    background-color: var(--color-background-light);
+    background-color: var(--color-background-light); /* Default background for all pages */
     transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* Homepage specific background */
+body.homepage-background {
+    background-image: url('../images/kolektib-hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Makes background scroll with content but appears fixed relative to viewport */
+    background-repeat: no-repeat;
+    background-color: var(--color-background-dark); /* Fallback for transparency/load */
 }
 
 /* Dark Mode styles */
@@ -37,14 +47,39 @@ body.dark-mode {
     background-color: var(--color-background-dark);
 }
 
+/* Adjust transparency or background color for content blocks in dark mode */
 body.dark-mode header,
 body.dark-mode footer,
 body.dark-mode .introduction,
 body.dark-mode .page-content .content-section,
-body.dark-mode .page-navigation,
-body.dark-mode .hero::before { /* Adjust overlay for dark mode if needed, though black is good */
-    background-color: var(--color-background-dark);
+body.dark-mode .page-navigation {
+    background-color: var(--color-background-dark); /* Ensure these sections are opaque in dark mode */
 }
+
+/* Homepage-specific adjustments for elements when full-page background is active */
+body.homepage-background header,
+body.homepage-background footer,
+body.homepage-background .introduction,
+body.homepage-background .page-content .content-section,
+body.homepage-background .page-navigation {
+    /* Use a slightly opaque background to make content readable over the image */
+    background-color: rgba(255, 255, 255, 0.9); /* Light background, 90% opaque */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Soft border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-bottom: 20px; /* Add some space between sections for visual separation */
+}
+
+/* Dark mode version for the homepage background elements */
+body.homepage-background.dark-mode header,
+body.homepage-background.dark-mode footer,
+body.homepage-background.dark-mode .introduction,
+body.homepage-background.dark-mode .page-content .content-section,
+body.homepage-background.dark-mode .page-navigation {
+    background-color: rgba(44, 44, 44, 0.9); /* Dark background, 90% opaque */
+    border-color: rgba(255, 255, 255, 0.1); /* Lighter border for dark mode */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
 
 body.dark-mode .desktop-nav ul li a,
 body.dark-mode .mobile-nav ul li a,
@@ -127,7 +162,7 @@ a:hover {
 
 /* Header */
 header {
-    background-color: var(--color-background-light);
+    background-color: var(--color-background-light); /* Default for all headers */
     padding: 15px 0;
     border-bottom: 1px solid var(--color-border-light);
     position: sticky;
@@ -304,49 +339,39 @@ body.dark-mode .theme-toggle .icon-dark {
 }
 
 
-/* --- Hero Section --- */
+/* --- Hero Section (Content only, background is now on body) --- */
 .hero {
-    position: relative; /* Needed for the overlay */
+    position: relative; /* Needed for z-index of content */
     width: 100%;
-    height: 60vh; /* Adjust height as needed, e.g., 70vh, 80vh */
+    height: 60vh; /* Adjust height as needed */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: var(--color-white); /* Ensure text is white for contrast */
+    color: var(--color-white); /* Text is white against the full-page background */
     padding: 20px;
     box-sizing: border-box;
-
-    /* --- BACKGROUND PROPERTIES FOR THE IMAGE --- */
-    background-image: url('../images/kolektib-hero-bg.jpg'); /* Adjust filename if you renamed it differently */
-    background-size: cover; /* Ensures the image covers the entire hero section */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    /* -------------------------------------- */
+    /* REMOVED background-image, background-size, etc. from here */
+    /* REMOVED ::before overlay from here, as body handles global background */
 }
 
-/* --- HERO OVERLAY FOR TEXT READABILITY --- */
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent overlay (adjust opacity 0.4-0.7) */
-    z-index: 1; /* Place overlay above background image but below content */
+/* --- Specific styling for Hero content when homepage-background is active --- */
+body.homepage-background .hero {
+    /* Make the hero transparent so the body background shows through */
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
 }
 
-/* --- HERO CONTENT STYLING (ensure z-index) --- */
 .hero .container {
-    position: relative; /* Place content above the overlay */
+    position: relative; /* Ensure content is above any potential future overlays */
     z-index: 2;
-    max-width: 900px; /* Limit content width */
+    max-width: 900px;
 }
 
 .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5em; /* Adjust font size as needed */
+    font-size: 3.5em;
     margin-bottom: 10px;
     line-height: 1.2;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Adds shadow for better readability */
@@ -376,7 +401,7 @@ main {
 }
 
 .introduction {
-    background-color: var(--color-primary);
+    background-color: var(--color-primary); /* Default for all introduction sections */
     color: var(--color-white);
     padding: 40px 0;
     text-align: center;
@@ -410,7 +435,7 @@ main {
 }
 
 .page-content .content-section {
-    background-color: var(--color-card-background-light);
+    background-color: var(--color-card-background-light); /* Default for all content sections */
     border: 1px solid var(--color-border-light);
     border-radius: 8px;
     padding: 30px;
@@ -481,7 +506,7 @@ body.dark-mode .image-placeholder .caption {
 .page-navigation {
     text-align: center;
     padding: 40px 0;
-    background-color: var(--color-background-light);
+    background-color: var(--color-background-light); /* Default for all page navigation sections */
     border-top: 1px solid var(--color-border-light);
     display: flex;
     justify-content: center;
@@ -521,7 +546,7 @@ body.dark-mode .image-placeholder .caption {
 
 /* Footer */
 footer {
-    background-color: var(--color-background-light);
+    background-color: var(--color-background-light); /* Default for all footers */
     color: var(--color-text-light);
     text-align: center;
     padding: 20px 0;
