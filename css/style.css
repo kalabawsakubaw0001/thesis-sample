@@ -31,12 +31,12 @@ body {
     transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
-/* Homepage specific background */
+/* Homepage specific background (only for index.html) */
 body.homepage-background {
     background-image: url('../images/kolektib-hero-bg.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Makes background scroll with content but appears fixed relative to viewport */
+    background-attachment: fixed; /* Makes background appear fixed while content scrolls */
     background-repeat: no-repeat;
     background-color: var(--color-background-dark); /* Fallback for transparency/load */
 }
@@ -52,8 +52,10 @@ body.dark-mode header,
 body.dark-mode footer,
 body.dark-mode .introduction,
 body.dark-mode .page-content .content-section,
-body.dark-mode .page-navigation {
+body.dark-mode .page-navigation,
+body.dark-mode .mobile-nav {
     background-color: var(--color-background-dark); /* Ensure these sections are opaque in dark mode */
+    border-color: var(--color-border-dark); /* Adjust border for dark mode */
 }
 
 /* Homepage-specific adjustments for elements when full-page background is active */
@@ -61,11 +63,12 @@ body.homepage-background header,
 body.homepage-background footer,
 body.homepage-background .introduction,
 body.homepage-background .page-content .content-section,
-body.homepage-background .page-navigation {
+body.homepage-background .page-navigation,
+body.homepage-background .mobile-nav { /* Apply to mobile nav too */
     /* Use a slightly opaque background to make content readable over the image */
     background-color: rgba(255, 255, 255, 0.9); /* Light background, 90% opaque */
     border: 1px solid rgba(0, 0, 0, 0.05); /* Soft border */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow */
     margin-bottom: 20px; /* Add some space between sections for visual separation */
 }
 
@@ -74,12 +77,12 @@ body.homepage-background.dark-mode header,
 body.homepage-background.dark-mode footer,
 body.homepage-background.dark-mode .introduction,
 body.homepage-background.dark-mode .page-content .content-section,
-body.homepage-background.dark-mode .page-navigation {
+body.homepage-background.dark-mode .page-navigation,
+body.homepage-background.dark-mode .mobile-nav { /* Apply to mobile nav too */
     background-color: rgba(44, 44, 44, 0.9); /* Dark background, 90% opaque */
     border-color: rgba(255, 255, 255, 0.1); /* Lighter border for dark mode */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
-
 
 body.dark-mode .desktop-nav ul li a,
 body.dark-mode .mobile-nav ul li a,
@@ -311,23 +314,41 @@ header .container {
     transform: rotate(-45deg) translate(5px, -5px);
 }
 
-/* Theme Toggle Button */
+/* --- Theme Toggle Button --- */
 .theme-toggle {
     background: none;
     border: none;
-    font-size: 1.5em;
+    font-size: 1.5em; /* Original size, adjust if needed */
     cursor: pointer;
-    margin-left: 20px;
-    transition: transform 0.3s ease;
+
+    /* NEW POSITIONING PROPERTIES */
+    position: fixed; /* Stays in place even when scrolling */
+    top: 20px;       /* 20px from the top edge of the viewport */
+    right: 20px;     /* 20px from the right edge of the viewport */
+    z-index: 1001;   /* Ensures it's above the sticky header (z-index 1000) and other content */
+
+    /* STYLING FOR THE BUTTON ITSELF */
+    background-color: rgba(255, 255, 255, 0.7); /* Light translucent background for visibility */
+    border-radius: 50%; /* Makes the button perfectly round */
+    width: 48px; /* Fixed width for the round button */
+    height: 48px; /* Fixed height for the round button */
+    display: flex; /* Use flexbox to perfectly center the icon inside the button */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transitions */
 }
 
 .theme-toggle:hover {
-    transform: scale(1.1);
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Enhance shadow on hover */
+    background-color: rgba(255, 255, 255, 0.9); /* Less translucent on hover */
 }
 
 .theme-toggle .icon-light,
 .theme-toggle .icon-dark {
     display: none;
+    font-size: 1.4em; /* Adjust icon size slightly for better fit in the round button */
 }
 
 body:not(.dark-mode) .theme-toggle .icon-light {
@@ -336,6 +357,16 @@ body:not(.dark-mode) .theme-toggle .icon-light {
 
 body.dark-mode .theme-toggle .icon-dark {
     display: inline-block;
+}
+
+/* Dark mode specific styling for the button */
+body.dark-mode .theme-toggle {
+    background-color: rgba(0, 0, 0, 0.7); /* Dark translucent background in dark mode */
+    color: var(--color-text-dark); /* Ensure icon color adjusts */
+}
+
+body.dark-mode .theme-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 
@@ -639,8 +670,13 @@ footer p {
         flex-direction: column;
         gap: 10px;
     }
+    /* Responsive adjustments for the button */
     .theme-toggle {
-        margin-left: 10px; /* Reduce margin on small screens */
+        top: 15px; /* Slightly less margin on smaller screens */
+        right: 15px;
+        width: 40px; /* Slightly smaller button on mobile */
+        height: 40px;
+        font-size: 1.2em; /* Smaller icon on mobile */
     }
     header .container {
         flex-wrap: nowrap; /* Prevent wrapping if toggle is next to logo */
