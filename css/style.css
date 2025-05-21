@@ -74,6 +74,7 @@ body.homepage-background .mobile-nav { /* Apply to mobile nav too */
 
 /* Dark mode version for the homepage background elements */
 body.homepage-background.dark-mode header,
+body.homepage-background.dark-mode .hero, /* Ensure hero is also dark mode compatible if it has a background */
 body.homepage-background.dark-mode footer,
 body.homepage-background.dark-mode .introduction,
 body.homepage-background.dark-mode .page-content .content-section,
@@ -672,8 +673,9 @@ footer p {
     }
     /* Responsive adjustments for the button */
     .theme-toggle {
-        top: 15px; /* Slightly less margin on smaller screens */
-        right: 15px;
+        /* Move the button lower on mobile to avoid the hamburger menu */
+        top: 80px; /* Adjusted to move below header on mobile */
+        right: 15px; /* Keep it on the right side */
         width: 40px; /* Slightly smaller button on mobile */
         height: 40px;
         font-size: 1.2em; /* Smaller icon on mobile */
