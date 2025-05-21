@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalabaw sa Kubaw Kolektib - Homepage</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="homepage-background">
     <header>
         <div class="container">
             <div class="logo-area">
-                <img src="images/university-logo.png" alt="University Logo" class="university-logo">
+                <a href="https://www.pup.edu.ph/" target="_blank">
+                    <img src="images/university-logo.png" alt="University Logo" class="university-logo">
+                </a>
                 <a href="index.html" class="site-title">Kalabaw sa Kubaw Kolektib</a>
             </div>
 
@@ -27,97 +29,64 @@
             </nav>
 
             <div class="menu-toggle" id="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
             </div>
+
+            <nav class="mobile-nav" id="mobile-nav">
+                <ul>
+                    <li><a href="index.html">Homepage</a></li>
+                    <li><a href="pages/pre-production.html">Pre-Production</a></li>
+                    <li><a href="pages/production.html">Production</a></li>
+                    <li><a href="pages/post-production.html">Documentation & Archiving</a></li>
+                    <li><a href="pages/about-collective.html">About the Kolektib</a></li>
+                </ul>
+            </nav>
         </div>
-
-        <nav class="mobile-nav" id="mobile-nav">
-            <ul>
-                <li><a href="index.html">Homepage</a></li>
-                <li><a href="pages/pre-production.html">Pre-Production</a></li>
-                <li><a href="pages/production.html">Production</a></li>
-                <li><a href="pages/post-production.html">Documentation & Archiving</a></li>
-                <li><a href="pages/about-collective.html">About the Kolektib</a></li>
-            </ul>
-        </nav>
     </header>
-
-    <button id="theme-toggle" class="theme-toggle">
-        <span class="icon-light">☀️</span>
-        <span class="icon-dark">🌙</span>
-    </button>
 
     <main>
         <section class="hero">
-            <div class="container hero-content">
-                <h1>The Theatrical Production Journey: From Concept to Live Act</h1>
+            <div class="container">
+                <h1 class="hero-title">The Theatrical Production Journey: From Conception to Live Act</h1>
                 <p class="subtitle">A Comprehensive Documentary by Kalabaw sa Kubaw Kolektib</p>
-                <p class="author-uni">Submitted by [Your Name], [Your University]</p>
-                <p class="synopsis-logline">Explore the intricate journey of creating a live performance, from the initial spark of an idea to the final stage presentation and its subsequent documentation.</p>
+                <p class="author-uni">Lianah Marie B. Mangi, Eusebio, [Enter name], [Enter name], [Enter name]</p>
+                <p class="author-uni">Polytechnic University of the Philippines</p>
+                <p class="synopsis-logline">Explore the intricate journey of creating a live theatrical performance, from the initial spark of an idea to the final stage presentation and its subsequent documentation.</p>
+                <div class="hero-buttons">
+                    <a href="pages/pre-production.html" class="button">Explore the Journey</a>
+                    <a href="pages/about-collective.html" class="button button-outline">About the Kolektib</a>
+                </div>
             </div>
         </section>
 
         <section class="introduction">
             <div class="container">
                 <h2>Welcome to the Journey of Theatrical Production</h2>
-                <p>This website serves as a detailed documentary through the essential stages of a live theatrical performance: Pre-Production, Production (including the live run), and Documentation & Archiving. For aspiring creatives, students, or simply the curious, we present each stage with clarity and in-depth understanding.</p>
-
+                <p>This website serves as a detailed documentary through the essential stages of a live theatrical performance: Pre-Production, Production (including the live run), and Documentation & Archiving. For aspiring creatives, theater enthusiasts, students, or simply the curious, we present each stage with clarity and in-depth understanding.</p>
+                <p>Kalabaw sa Kubaw Kolektib aims to showcase the meticulous planning, collaborative efforts, and artistic dedication required to transform a script into a living, breathing stage act. Dive in to discover the passion behind the scenes!</p>
                 <div class="navigation-buttons">
-                    <a href="pages/pre-production.html" class="button">Explore Pre-Production</a>
-                    <a href="pages/production.html" class="button button-outline">Enter Production Stage</a>
+                    <a href="pages/pre-production.html" class="button">Start from Pre-Production</a>
+                    <a href="pages/production.html" class="button button-outline">Jump to Production</a>
                 </div>
             </div>
         </section>
-
-        <section class="page-content">
-            <div class="container">
-                <div class="content-section">
-                    <h2>Key Elements of Performance Creation</h2>
-                    <p>Understanding the fundamental components is crucial for a successful stage production. From dramaturgy to stage management, each element plays a vital role.</p>
-
-                    <h3>The Power of Theatrical Storytelling</h3>
-                    <p>At the heart of every great performance is a compelling story. This section discusses dramatic structures, character arcs, and thematic development for the stage.</p>
-
-                    <div class="image-placeholder">
-                        <img src="images/placeholder-1.jpg" alt="Illustration of Theater Arts">
-                        <p class="caption">An illustration representing the collaborative nature of theater production.</p>
-                    </div>
-
-                    <h3>Staging, Visual Design, and Performance</h3>
-                    <p>The visual and auditory landscape of a live show greatly impacts its message. We examine blocking, scenic design, lighting, and performance techniques to create impactful theatrical experiences.</p>
-                </div>
-
-                <div class="content-section">
-                    <h2>Contemporary Trends in Performance</h2>
-                    <p>The performing arts landscape is constantly evolving. We will discuss the impact of new technologies, immersive experiences, and diverse storytelling approaches in live theater.</p>
-                    <div class="gallery">
-                        <div class="image-placeholder">
-                            <img src="images/placeholder-2.jpg" alt="Behind the scenes rehearsal">
-                            <p class="caption">A director coaching actors during a rehearsal.</p>
-                        </div>
-                        <div class="image-placeholder">
-                            <img src="images/placeholder-3.jpg" alt="Documentation of a live performance">
-                            <p class="caption">Post-performance documentation and archival preparation.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="page-navigation">
-            <a href="pages/pre-production.html" class="button">Start the Journey</a>
-        </section>
-
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Kalabaw sa Kubaw Kolektib. All Rights Reserved.</p>
+            <p>© 2025 Kalabaw sa Kubaw Kolektib. All Rights Reserved.</p>
             <p>Submitted as a thesis for Bachelor of Performing Arts, Major in Theater Arts.</p>
         </div>
     </footer>
+
+    <div id="fixed-controls">
+        <button id="theme-toggle" class="theme-toggle">
+            <span class="material-symbols-outlined theme-icon">
+                light_mode </span>
+        </button>
+    </div>
 
     <script src="js/script.js"></script>
 </body>
