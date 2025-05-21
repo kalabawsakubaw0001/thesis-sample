@@ -1,51 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Hamburger Menu Toggle ---
+    // --- Theme Toggle Functionality ---
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Check for saved theme preference in localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-mode');
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        // Save theme preference to localStorage
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+        } else {
+            localStorage.setItem('theme', 'light');
+        }
+    });
+
+    // --- Mobile Navigation (Hamburger Menu) Functionality ---
     const menuToggle = document.getElementById('menu-toggle');
     const mobileNav = document.getElementById('mobile-nav');
 
-    if (menuToggle && mobileNav) {
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            mobileNav.classList.toggle('active');
-            // Toggle aria-expanded for accessibility
-            const isExpanded = mobileNav.classList.contains('active');
-            menuToggle.setAttribute('aria-expanded', isExpanded);
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('open');
+        mobileNav.classList.toggle('open');
+    });
+
+    // Close mobile nav when a link is clicked (optional, but good for UX)
+    mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('open');
+            mobileNav.classList.remove('open');
         });
-
-        // Optional: Close mobile menu when a link is clicked
-        mobileNav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                mobileNav.classList.remove('active');
-                menuToggle.setAttribute('aria-expanded', 'false');
-            });
-        });
-    }
-
-    // --- Light/Dark Mode Toggle ---
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-    const currentTheme = localStorage.getItem('theme');
-
-    // Apply saved theme on load
-    if (currentTheme) {
-        body.classList.add(currentTheme);
-    } else {
-        // Default to light mode if no preference is saved
-        body.classList.add('light-mode');
-    }
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            if (body.classList.contains('dark-mode')) {
-                body.classList.remove('dark-mode');
-                body.classList.add('light-mode');
-                localStorage.setItem('theme', 'light-mode');
-            } else {
-                body.classList.remove('light-mode'); // Ensure only one is active
-                body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark-mode');
-            }
-        });
-    }
+    });
 });
