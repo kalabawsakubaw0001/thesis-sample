@@ -1,8 +1,8 @@
 /* General Body and Container Styles */
 :root {
-    /* Light Mode Colors - Updated for Classical/Theatre Theme */
-    --color-primary: #600020; /* Deep Maroon/Burgundy (e.g., theatre curtains) */
-    --color-secondary: #DAA520; /* Goldenrod (e.g., gold accents, stage lights) */
+    /* Light Mode Colors */
+    --color-primary: #8a2be2; /* BlueViolet - main accent */
+    --color-secondary: #008080; /* Teal - secondary accent */
     --color-text-light: #333333; /* Dark gray for text */
     --color-background-light: #f8f8f8; /* Light gray background */
     --color-card-background-light: #ffffff; /* White card backgrounds */
@@ -27,49 +27,242 @@ body {
     padding: 0;
     line-height: 1.6;
     color: var(--color-text-light);
-    background-color: var(--color-background-light);
+    background-color: var(--color-background-light); /* Default background for all pages */
     transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
-/* Dark Mode Specific Styles */
+/* Homepage specific background (only for index.html) */
+body.homepage-background {
+    /* Slightly less intense gradient for day mode since text will be white */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('https://imgur.com/EjLxVov.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: #333; /* A slightly darker fallback color */
+}
+
+/* Pre-Production page specific background */
+body.pre-production-background {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('https://imgur.com/EjLxVov.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: #333; /* Fallback color */
+}
+
+/* About the Kolektib and Production Team pages specific background */
+body.about-kolektib-background {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('../images/about-the-kolektib-hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-color: #333; /* Fallback color */
+}
+
+
+/* Dark Mode styles */
 body.dark-mode {
     color: var(--color-text-dark);
     background-color: var(--color-background-dark);
 }
 
+/* Homepage specific background in Dark Mode */
+body.homepage-background.dark-mode {
+    /* Stronger gradient for dark mode to ensure white text visibility */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://imgur.com/9yneXG5.jpg');
+    background-color: #222; /* Darker fallback for dark mode */
+}
+
+/* Pre-Production page specific background in Dark Mode */
+body.pre-production-background.dark-mode {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://imgur.com/uW4lfWb.jpg');
+    background-color: #222; /* Darker fallback for dark mode */
+}
+
+/* About the Kolektib and Production Team pages specific background in Dark Mode */
+body.about-kolektib-background.dark-mode {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('../images/about-the-kolektib-hero-bg.jpg');
+    background-color: #222; /* Darker fallback for dark mode */
+}
+
+
+/* Adjust transparency or background color for content blocks in dark mode */
 body.dark-mode header,
 body.dark-mode footer,
-body.dark-mode .content-section,
-body.dark-mode .hero-buttons .button,
-body.dark-mode .button {
-    background-color: var(--color-card-background-dark);
-    border-color: var(--color-border-dark);
-    color: var(--color-text-dark);
+body.dark-mode .introduction,
+body.dark-mode .page-content .content-section,
+body.dark-mode .page-navigation,
+body.dark-mode .mobile-nav {
+    background-color: var(--color-background-dark); /* Ensure these sections are opaque in dark mode */
+    border-color: var(--color-border-dark); /* Adjust border for dark mode */
 }
 
-body.dark-mode a {
-    color: var(--color-primary); /* Links might still be primary color */
+/* Homepage-specific adjustments for elements when full-page background is active */
+/* These make the main content sections (header, footer, introduction, page-content) opaque over the background image */
+/* Removed background-color from .hero, as it should be transparent on homepage */
+body.homepage-background header,
+body.homepage-background .page-content .content-section,
+body.homepage-background .page-navigation,
+body.homepage-background .mobile-nav {
+    background-color: rgba(255, 255, 255, 0.9); /* Light background, 90% opaque */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Soft border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    margin-bottom: 20px; /* Add some space between sections for visual separation */
 }
 
-body.dark-mode .site-title,
-body.dark-mode .site-title:hover {
-    color: var(--color-text-dark);
+/* Pre-Production page adjustments for elements when full-page background is active */
+body.pre-production-background header,
+body.pre-production-background .page-content .content-section,
+body.pre-production-background .page-navigation,
+body.pre-production-background .mobile-nav {
+    background-color: rgba(255, 255, 255, 0.9); /* Light background, 90% opaque */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Soft border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    margin-bottom: 20px; /* Add some space between sections for visual separation */
 }
 
-body.dark-mode nav ul li a {
-    color: var(--color-text-dark);
+/* About the Kolektib and Production Team pages adjustments for elements when full-page background is active */
+body.about-kolektib-background header,
+body.about-kolektib-background .page-content .content-section,
+body.about-kolektib-background .page-navigation,
+body.about-kolektib-background .mobile-nav {
+    background-color: rgba(255, 255, 255, 0.7); /* Light background, 70% opaque */
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Soft border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    margin-bottom: 20px; /* Add some space between sections for visual separation */
 }
 
-body.dark-mode nav ul li a:hover,
-body.dark-mode nav ul li a.active {
-    color: var(--color-primary);
+
+/* Introduction section on homepage is transparent */
+body.homepage-background .introduction {
+    background-color: transparent; /* Remove background for seamless flow */
+    border: none; /* Remove border */
+    box-shadow: none; /* Remove shadow */
+    padding: 40px 20px 0 20px; /* Adjust padding to sit closer to hero */
+    margin-bottom: 20px; /* Maintain space below */
 }
 
-body.dark-mode .hero-buttons .button-outline,
-body.dark-mode .button-outline {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+/* Footer background transparent on homepage */
+body.homepage-background footer {
     background-color: transparent;
+    border-top: none; /* Remove top border if it clashes */
+    box-shadow: none;
+    color: var(--color-white); /* Ensure text is readable over the dark background */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Add shadow for readability */
+}
+
+/* Footer background transparent on pre-production page */
+body.pre-production-background footer {
+    background-color: transparent;
+    border-top: none;
+    box-shadow: none;
+    color: var(--color-white); /* Ensure text is readable over the dark background */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Add shadow for readability */
+}
+
+/* Footer background transparent on about the kolektib and production team pages */
+body.about-kolektib-background footer {
+    background-color: transparent;
+    border-top: none;
+    box-shadow: none;
+    color: var(--color-white); /* Ensure text is readable over the dark background */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Add shadow for readability */
+}
+
+
+/* Dark mode version for the homepage background elements */
+body.homepage-background.dark-mode header,
+body.homepage-background.dark-mode .page-content .content-section,
+body.homepage-background.dark-mode .page-navigation,
+body.homepage-background.dark-mode .mobile-nav {
+    background-color: rgba(44, 44, 44, 0.9); /* Dark background, 90% opaque */
+    border-color: rgba(255, 255, 255, 0.1); /* Lighter border for dark mode */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode version for the pre-production page background elements */
+body.pre-production-background.dark-mode header,
+body.pre-production-background.dark-mode .page-content .content-section,
+body.pre-production-background.dark-mode .page-navigation,
+body.pre-production-background.dark-mode .mobile-nav {
+    background-color: rgba(44, 44, 44, 0.9); /* Dark background, 90% opaque */
+    border-color: rgba(255, 255, 255, 0.1); /* Lighter border for dark mode */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark mode version for the about the kolektib and production team pages background elements */
+body.about-kolektib-background.dark-mode header,
+body.about-kolektib-background.dark-mode .page-content .content-section,
+body.about-kolektib-background.dark-mode .page-navigation,
+body.about-kolektib-background.dark-mode .mobile-nav {
+    background-color: rgba(44, 44, 44, 0.7); /* Dark background, 70% opaque */
+    border-color: rgba(255, 255, 255, 0.1); /* Lighter border for dark mode */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Introduction section on homepage in dark mode is transparent */
+body.homepage-background.dark-mode .introduction {
+    background-color: transparent; /* Remove background for seamless flow */
+    border: none; /* Remove border */
+    box-shadow: none; /* Remove shadow */
+    padding: 40px 20px 0 20px; /* Adjust padding to sit closer to hero */
+    margin-bottom: 20px; /* Maintain space below */
+}
+
+/* Footer background transparent on homepage in dark mode */
+body.homepage-background.dark-mode footer {
+    background-color: transparent;
+    border-top: none;
+    box-shadow: none;
+    color: var(--color-white); /* Ensure text is white in dark mode */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Footer background transparent on pre-production page in dark mode */
+body.pre-production-background.dark-mode footer {
+    background-color: transparent;
+    border-top: none;
+    box-shadow: none;
+    color: var(--color-white); /* Ensure text is white in dark mode */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Footer background transparent on about the kolektib and production team pages in dark mode */
+body.about-kolektib-background.dark-mode footer {
+    background-color: transparent;
+    border-top: none;
+    box-shadow: none;
+    color: var(--color-white); /* Ensure text is white in dark mode */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+
+body.dark-mode .desktop-nav ul li a,
+body.dark-mode .mobile-nav ul li a,
+body.dark-mode .site-title {
+    color: var(--color-text-dark);
+}
+
+body.dark-mode .desktop-nav ul li a:hover,
+body.dark-mode .mobile-nav ul li a:hover,
+body.dark-mode .desktop-nav ul li a.active,
+body.dark-mode .mobile-nav ul li a.active {
+    color: var(--color-primary);
+}
+
+body.dark-mode .button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+body.dark-mode .button-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
 }
 
 body.dark-mode .button-outline:hover {
@@ -77,357 +270,497 @@ body.dark-mode .button-outline:hover {
     color: var(--color-white);
 }
 
-body.dark-mode .member-profile {
+body.dark-mode .content-section,
+body.dark-mode .gallery .image-placeholder {
     background-color: var(--color-card-background-dark);
     border: 1px solid var(--color-border-dark);
 }
 
-/* Dark mode specific for navigation buttons in introduction */
-body.dark-mode .navigation-buttons .button {
-    background-color: var(--color-primary); /* Use primary in dark mode */
-    border-color: var(--color-primary);
-    color: var(--color-white); /* Ensure text is white */
+body.dark-mode .menu-toggle span {
+    background-color: var(--color-text-dark);
 }
 
-body.dark-mode .navigation-buttons .button:hover {
-    background-color: var(--color-secondary); /* Hover with secondary in dark mode */
-    border-color: var(--color-secondary);
-}
-
-body.dark-mode .navigation-buttons .button-outline {
-    border-color: var(--color-secondary); /* Use secondary for outline in dark mode */
-    color: var(--color-secondary);
-    background-color: transparent;
-}
-
-body.dark-mode .navigation-buttons .button-outline:hover {
-    background-color: var(--color-secondary); /* Hover with secondary in dark mode */
-    color: var(--color-white);
-}
-
-/* Dark mode adjustments for the fixed button */
-body.dark-mode .theme-toggle {
-    background-color: var(--color-secondary); /* Different background in dark mode */
-    color: var(--color-text-dark); /* Icon color in dark mode */
-}
-body.dark-mode .theme-toggle:hover {
-    background-color: var(--color-primary);
-}
-
-
+/* Global Container */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px;
 }
 
-/* Typography */
+/* Headings */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
-    color: var(--color-primary);
-    margin-top: 0;
-    margin-bottom: 15px;
+    color: var(--color-text-light); /* Default for most headings */
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    transition: color var(--transition-speed);
 }
 
-h1 { font-size: 2.8em; }
-h2 { font-size: 2.2em; }
-h3 { font-size: 1.8em; }
-
-p {
-    margin-bottom: 1em;
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: var(--color-text-dark); /* Dark mode for most headings */
 }
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.5em; }
 
 a {
     color: var(--color-primary);
     text-decoration: none;
-    transition: color var(--transition-speed);
+    transition: color 0.3s ease;
 }
 
 a:hover {
     color: var(--color-secondary);
 }
 
-ul {
-    list-style: disc;
-    padding-left: 20px;
-    margin-bottom: 1em;
-}
-
-ol {
-    list-style: decimal;
-    padding-left: 20px;
-    margin-bottom: 1em;
-}
-
-li {
-    margin-bottom: 0.5em;
-}
-
 /* Header */
 header {
-    background-color: var(--color-card-background-light);
-    color: var(--color-text-light);
-    padding: 3px 0; /* Reduced padding for minimalist touch */
+    background-color: var(--color-background-light); /* Default for all headers */
+    padding: 15px 0;
     border-bottom: 1px solid var(--color-border-light);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
-    z-index: 1000;
-    transition: background-color var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
+    z-index: 1000; /* Ensure header stays on top */
+    transition: background-color var(--transition-speed), border-color var(--transition-speed);
 }
 
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /* Allow wrapping for mobile */
 }
 
 .logo-area {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-grow: 1; /* Allow logo area to take available space */
 }
 
 .university-logo {
-    height: 35px; /* Reduced height for minimalist touch */
+    height: 50px; /* Adjust as needed */
     width: auto;
-    vertical-align: middle;
 }
 
 .site-title {
     font-family: 'Playfair Display', serif;
-    font-size: 1.4em; /* Reduced font size for minimalist touch */
+    font-size: 1.8em;
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-text-light);
     text-decoration: none;
-    transition: color var(--transition-speed);
-    line-height: normal;
-    margin: 0;
+    transition: color 0.3s ease;
 }
 
 .site-title:hover {
-    color: var(--color-secondary);
-}
-
-/* Desktop Navigation */
-.desktop-nav {
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 20px;
-}
-
-.desktop-nav ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    gap: 25px;
-}
-
-.desktop-nav a {
-    color: var(--color-text-light);
-    font-weight: 600;
-    font-size: 0.9em; /* Reduced font size for minimalist touch */
-    padding: 5px 0;
-    position: relative;
-    transition: color var(--transition-speed);
-}
-
-.desktop-nav a:hover,
-.desktop-nav a.active {
     color: var(--color-primary);
 }
 
-.desktop-nav a.active::after {
+/* Desktop Navigation */
+.desktop-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px; /* Space between navigation items */
+}
+
+.desktop-nav ul li a {
+    color: var(--color-text-light);
+    font-weight: 600;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.desktop-nav ul li a::after {
     content: '';
     position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 100%;
+    width: 0;
     height: 2px;
+    bottom: 0;
+    left: 0;
     background-color: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.desktop-nav ul li a:hover::after,
+.desktop-nav ul li a.active::after {
+    width: 100%;
+}
+
+.desktop-nav ul li a.active {
+    color: var(--color-primary);
 }
 
 /* Mobile Navigation (Hidden by default) */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-    z-index: 1001;
-}
-
-.bar {
-    width: 25px;
-    height: 3px;
-    background-color: var(--color-text-light);
-    transition: all 0.3s ease;
-}
-
-.menu-toggle.open .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-.menu-toggle.open .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle.open .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-}
-
 .mobile-nav {
     display: none;
-    position: fixed;
-    top: 0;
-    right: -300px;
-    width: 250px;
-    height: 100%;
-    background-color: var(--color-card-background-light);
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-    transition: right 0.3s ease-in-out;
-    padding-top: 80px;
-    z-index: 999;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-left: 20px;
+    width: 100%;
+    background-color: var(--color-background-light); /* Matches header background */
+    border-top: 1px solid var(--color-border-light);
+    padding-bottom: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .mobile-nav.open {
-    right: 0;
-    display: flex;
+    display: block;
 }
 
 .mobile-nav ul {
     list-style: none;
+    margin: 10px 0 0 0;
     padding: 0;
-    width: 100%;
+    text-align: center;
 }
 
 .mobile-nav ul li {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .mobile-nav ul li a {
     color: var(--color-text-light);
-    font-size: 1.2em;
+    font-weight: 600;
     display: block;
-    padding: 10px 0;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.mobile-nav ul li a:hover {
-    color: var(--color-primary);
-}
-
-/* Fixed Theme Toggle Button */
-#fixed-controls {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-}
-
-.theme-toggle {
+.mobile-nav ul li a:hover,
+.mobile-nav ul li a.active {
     background-color: var(--color-primary);
     color: var(--color-white);
+    border-radius: 5px;
+}
+
+/* Hamburger Menu Toggle */
+.menu-toggle {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-text-light);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Transform hamburger to 'X' */
+.menu-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* --- Theme Toggle Button (FIXED TO LOWER RIGHT) --- */
+.theme-toggle {
+    background: none;
     border: none;
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
-    display: flex;
+    font-size: 1.5em;
+    cursor: pointer;
+
+    /* FIXED POSITIONING TO LOWER RIGHT */
+    position: fixed;
+    bottom: 20px;   /* 20px from the bottom edge of the viewport */
+    right: 20px;    /* 20px from the right edge of the viewport */
+    z-index: 1001;  /* Ensures it's above other content */
+
+    /* STYLING FOR THE BUTTON ITSELF */
+    background-color: rgba(255, 255, 255, 0.7); /* Light translucent background for visibility */
+    border-radius: 50%; /* Makes the button perfectly round */
+    width: 48px; /* Fixed width for the round button */
+    height: 48px; /* Fixed height for the round button */
+    display: flex; /* Use flexbox to perfectly center the icon inside the button */
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transitions */
 }
 
 .theme-toggle:hover {
-    background-color: var(--color-secondary);
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Enhance shadow on hover */
+    background-color: rgba(255, 255, 255, 0.9); /* Less translucent on hover */
 }
 
-.theme-toggle .theme-icon {
-    font-size: 28px;
-    transition: color var(--transition-speed);
+.theme-toggle .icon-light,
+.theme-toggle .icon-dark {
+    display: none;
+    font-size: 1.4em; /* Adjust icon size slightly for better fit in the round button */
+}
+
+body:not(.dark-mode) .theme-toggle .icon-light {
+    display: inline-block;
+}
+
+body.dark-mode .theme-toggle .icon-dark {
+    display: inline-block;
+}
+
+/* Dark mode specific styling for the button */
+body.dark-mode .theme-toggle {
+    background-color: rgba(0, 0, 0, 0.7); /* Dark translucent background in dark mode */
+    color: var(--color-text-dark); /* Ensure icon color adjusts */
+}
+
+body.dark-mode .theme-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 
-/* Hero Section (Homepage) */
+/* --- Hero Section (Content only, background is now on body) --- */
 .hero {
-    background: url('../images/kolektib-hero-bg.jpg') no-repeat center center/cover;
-    color: var(--color-white);
-    text-align: center;
-    padding: 100px 20px;
-    min-height: 500px;
+    position: relative;
+    width: 100%;
+    /* Set min-height to 0 to allow content to move up as much as possible */
+    min-height: 0;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
-    z-index: 1;
-}
-
-/* This is for homepage background */
-body.homepage-background {
-    background: url('../images/kolektib-hero-bg.jpg') no-repeat center center/cover;
-    background-attachment: fixed;
-    background-blend-mode: overlay;
-    background-color: rgba(0,0,0,0.5);
-}
-
-body.homepage-background.dark-mode {
-    background-color: rgba(0,0,0,0.7);
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.4);
-    z-index: -1;
+    text-align: center;
+    /* Set padding-top and padding-bottom to 0 for minimal vertical space */
+    padding: 0px 20px 0px 20px; /* Reduced padding-bottom to 0px as well */
+    box-sizing: border-box;
+    background-color: transparent; /* Ensure hero section background is transparent */
+    box-shadow: none; /* Remove any shadow on the hero section */
+    border: none;
 }
 
 .hero .container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
+    max-width: 900px;
+    padding: 0; /* Ensure no extra padding inside container on hero */
 }
 
-.hero-title {
-    font-size: 3.5em;
-    margin-bottom: 10px;
-    color: var(--color-white);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Added for classical depth */
+/* Consolidated styling for hero text on homepage */
+/* All hero text on homepage will be white with text-shadow, regardless of dark mode toggle */
+body.homepage-background .hero h1,
+body.homepage-background .hero .subtitle,
+body.homepage-background .hero .author-uni,
+body.homepage-background .hero .synopsis-logline {
+    color: var(--color-white); /* Always white on homepage hero */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9); /* Strong text-shadow for readability */
+    -webkit-text-stroke: initial; /* Ensure no text stroke is applied */
+}
+
+/* Adjusted margin-top for h1 in hero section on homepage to remove space */
+body.homepage-background .hero h1 {
+    margin-top: 0; /* Removed top margin to pull it up */
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3em;
+    line-height: 1.2;
+    margin-bottom: 15px;
 }
 
 .hero .subtitle {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-    color: var(--color-white);
-    opacity: 0.9;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
 .hero .author-uni,
 .hero .synopsis-logline {
-    font-size: 1.1em;
-    color: var(--color-white);
-    opacity: 0.8;
-    max-width: 800px;
-    margin: 0 auto 30px auto;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95em;
+    margin-bottom: 10px;
+    line-height: 1.5;
 }
 
-.hero-buttons {
+.hero .navigation-buttons {
     margin-top: 30px;
     display: flex;
     justify-content: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
-/* General Button Styles */
+
+/* Main Content Sections */
+main {
+    padding: 40px 0;
+}
+
+.introduction {
+    background-color: var(--color-primary); /* Default for other pages */
+    color: var(--color-white);
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 0;
+}
+
+.introduction h2 {
+    color: var(--color-white); /* Default for other pages */
+    margin-bottom: 20px;
+}
+
+body.dark-mode .introduction h2 { /* Ensure h2 in introduction in dark mode (on other pages) stays white */
+    color: var(--color-white);
+}
+
+/* **NEW CHANGE:** On homepage, introduction text color will ALWAYS be white with text-shadow */
+body.homepage-background .introduction h2,
+body.homepage-background .introduction p {
+    color: var(--color-white); /* Always white text for intro on homepage */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Add shadow for readability */
+}
+
+/* Remove previous specific dark mode rule for homepage introduction text */
+body.homepage-background.dark-mode .introduction h2,
+body.homepage-background.dark-mode .introduction p {
+    /* These rules are now redundant as the one above applies universally on homepage */
+    /* If you want different shadow/color in dark mode, you can re-add with !important or adjust specificity */
+}
+
+.introduction p {
+    max-width: 800px;
+    margin: 0 auto 30px auto;
+    font-size: 1.1em;
+}
+
+.navigation-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Page Content */
+.page-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 3em;
+    color: var(--color-primary);
+}
+
+/* Pre-Production page specific adjustments for page-title text color */
+body.pre-production-background .page-title {
+    color: var(--color-white); /* White text for page title on pre-production background */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9); /* Strong text-shadow for readability */
+}
+
+body.pre-production-background.dark-mode .page-title {
+    color: var(--color-white); /* Keep white in dark mode too */
+}
+
+/* About the Kolektib and Production Team pages specific adjustments for page-title text color */
+body.about-kolektib-background .page-title {
+    color: var(--color-white); /* White text for page title on about kolektib background */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9); /* Strong text-shadow for readability */
+}
+
+body.about-kolektib-background.dark-mode .page-title {
+    color: var(--color-white); /* Keep white in dark mode too */
+}
+
+
+.page-content .content-section {
+    background-color: var(--color-card-background-light);
+    border: 1px solid var(--color-border-light);
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-section h2 {
+    color: var(--color-secondary);
+    border-bottom: 2px solid var(--color-border-light);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s ease;
+}
+
+body.dark-mode .content-section h2 {
+    border-color: var(--color-border-dark);
+}
+
+.content-section h3 {
+    color: var(--color-primary);
+    margin-top: 25px;
+}
+
+.image-placeholder {
+    text-align: center;
+    margin: 30px 0;
+    background-color: var(--color-background-light);
+    border: 1px solid var(--color-border-light);
+    border-radius: 8px;
+    padding: 15px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+body.dark-mode .image-placeholder {
+    background-color: var(--color-card-background-dark);
+    border-color: var(--color-border-dark);
+}
+
+.image-placeholder img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+.image-placeholder .caption {
+    font-size: 0.9em;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .image-placeholder .caption {
+    color: var(--color-text-dark);
+}
+
+/* Gallery layout for multiple images */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Page Navigation Buttons */
+.page-navigation {
+    text-align: center;
+    padding: 40px 0;
+    background-color: var(--color-background-light);
+    border-top: 1px solid var(--color-border-light);
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Buttons */
 .button {
     display: inline-block;
     background-color: var(--color-primary);
@@ -436,13 +769,12 @@ body.homepage-background.dark-mode {
     border-radius: 5px;
     text-decoration: none;
     font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    border: 2px solid var(--color-primary);
+    transition: background-color 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
+    border: 2px solid transparent;
 }
 
 .button:hover {
     background-color: var(--color-secondary);
-    border-color: var(--color-secondary);
     transform: translateY(-2px);
 }
 
@@ -457,200 +789,37 @@ body.homepage-background.dark-mode {
     color: var(--color-white);
 }
 
-/* Introduction Section (Homepage) */
-.introduction {
-    padding: 60px 0;
-    text-align: center;
-    background-color: transparent;
-    border-bottom: none;
-    transition: background-color var(--transition-speed), border-color var(--transition-speed);
-}
-
-/* Ensure headings within introduction are also white */
-.introduction h2 {
-    color: var(--color-white);
-}
-
-/* Ensure paragraphs within introduction are also white */
-.introduction p {
-    color: var(--color-white);
-    max-width: 800px;
-    margin: 0 auto 20px auto;
-    font-size: 1.1em;
-}
-
-/* Adjust heading underline color for introduction */
-.introduction h2::after {
-    background-color: var(--color-secondary); /* Changed to secondary color for accent */
-}
-
-
-.navigation-buttons {
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-/* Ensure buttons within introduction match the new background */
-.navigation-buttons .button {
-    background-color: var(--color-primary); /* Uses new primary */
-    border-color: var(--color-primary);
-    color: var(--color-white);
-}
-.navigation-buttons .button:hover {
-    background-color: var(--color-secondary); /* Hover with new secondary */
-    border-color: var(--color-secondary);
-}
-.navigation-buttons .button-outline {
-    border-color: var(--color-secondary); /* Uses new secondary for outline */
-    color: var(--color-secondary);
-    background-color: transparent;
-}
-.navigation-buttons .button-outline:hover {
-    background-color: var(--color-secondary); /* Hover with new secondary */
-    color: var(--color-white);
-}
-
-/* Inner Page Hero Sections */
-.inner-page-hero {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    text-align: center;
-    padding: 80px 20px;
-    min-height: 250px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color var(--transition-speed);
-}
-
-.inner-page-hero h1 {
-    color: var(--color-white);
-    font-size: 3em;
-    margin-bottom: 10px;
-}
-
-.inner-page-hero .subtitle {
-    font-size: 1.3em;
-    opacity: 0.9;
-}
-
-/* Specific hero background images for inner pages (placeholders) */
-.pre-production-hero {
-    background: url('../images/placeholder-hero-preprod.jpg') no-repeat center center/cover;
-    background-blend-mode: overlay;
-    background-color: rgba(45, 0, 24, 0.6); /* Deeper burgundy from new palette */
-}
-
-.production-hero {
-    background: url('../images/placeholder-hero-prod.jpg') no-repeat center center/cover;
-    background-blend-mode: overlay;
-    background-color: rgba(96, 0, 32, 0.6); /* New primary color for production hero */
-}
-
-.post-production-hero {
-    background: url('../images/placeholder/placeholder-hero-postprod.jpg') no-repeat center center/cover;
-    background-blend-mode: overlay;
-    background-color: rgba(218, 165, 32, 0.6); /* New secondary color for post-production hero */
-}
-
-.about-collective-hero {
-    background: url('../images/placeholder-hero-about.jpg') no-repeat center center/cover;
-    background-blend-mode: overlay;
-    background-color: rgba(0, 50, 80, 0.6); /* Deep, elegant blue */
-}
-
-
-/* Main Content Sections */
-.content-section {
-    padding: 60px 0;
-    background-color: var(--color-card-background-light);
-    border-bottom: 1px solid var(--color-border-light);
-    transition: background-color var(--transition-speed), border-color var(--transition-speed);
-}
-
-.content-section:last-of-type {
-    border-bottom: none;
-}
-
-.content-section h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    position: relative;
-}
-
-.content-section h2::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: -10px;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background-color: var(--color-primary); /* Changed to primary color for consistency */
-}
-
-.content-section h3 {
-    margin-top: 30px;
-    color: var(--color-secondary);
-}
-
-/* Gallery Styles */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-.image-placeholder {
-    background-color: var(--color-background-light);
-    border: 1px solid var(--color-border-light);
-    border-radius: 8px;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color var(--transition-speed), border-color var(--transition-speed);
-}
-
-.image-placeholder img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
-}
-
-.image-placeholder .caption {
-    padding: 15px;
-    font-size: 0.9em;
-    color: var(--color-text-light);
-    transition: color var(--transition-speed);
-}
-
-/* Video Container */
+/* --- Responsive Video Embeds --- */
 .video-container {
     position: relative;
-    padding-bottom: 56.25%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
     height: 0;
     overflow: hidden;
-    max-width: 100%;
+    max-width: 800px;
+    width: 100%;
     background: #000;
-    margin: 20px 0;
+    margin: 30px auto;
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.video-container iframe {
+.video-container iframe,
+.video-container object,
+.video-container embed {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    border: 0;
 }
 
+/* Dark mode adjustments for video container */
+body.dark-mode .video-container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
 
-/* Member Profile (About Page) */
+/* --- About Page: Member Profiles --- */
 .member-profile {
     display: flex;
     align-items: center;
@@ -660,82 +829,228 @@ body.homepage-background.dark-mode {
     background-color: var(--color-card-background-light);
     border: 1px solid var(--color-border-light);
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    transition: background-color var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Hover effect for images in member profiles */
+.member-profile img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Ensure transform is transitioned */
+}
+
+.member-profile img:hover {
+    transform: scale(1.5); /* Zooms the image to 1.5x its size (50% more) */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    z-index: 1; /* Bring to front on hover */
+}
+
+
+/* Alternate layout for every second member */
 .member-profile:nth-child(even) {
     flex-direction: row-reverse;
 }
 
-.member-image {
-    flex-shrink: 0;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid var(--color-secondary); /* Uses new secondary for accent border */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Simplified member profile for production team */
+.member-profile.simplified {
+    display: flex; /* Ensure flexbox is used for simplified profiles */
+    flex-direction: column; /* Default to column for consistency, will override for 2-column */
+    align-items: center; /* Center items in column layout */
+    text-align: center; /* Center text for simplified profiles */
+    padding: 15px; /* Slightly less padding */
+    margin-bottom: 20px; /* Less margin between simplified profiles */
+    flex: 1 1 calc(33.333% - 20px); /* Allows three items per row with gap */
+    max-width: calc(33.333% - 20px); /* Ensures max width for three columns */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-.member-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* Container for simplified member profiles to enable three-column layout */
+.content-section .simplified-members-grid {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: center; /* Center the items if there's an odd number */
+    gap: 30px; /* Space between the member profiles */
+    margin-top: 20px;
 }
+
+.member-profile.simplified .member-text {
+    text-align: center; /* Center text for simplified profiles */
+}
+
+.member-profile.simplified .member-text h3 {
+    font-size: 1.5em; /* Slightly smaller heading */
+    margin-top: 10px; /* Add some space between image and name */
+    margin-bottom: 5px; /* Reduce space below name */
+}
+
+.member-profile.simplified .member-role {
+    font-size: 0.9em; /* Slightly smaller role text */
+    margin-top: 0; /* Remove top margin */
+    margin-bottom: 0; /* Remove bottom margin */
+}
+
+.member-profile.simplified .member-description {
+    display: none; /* Hide description for simplified profiles */
+}
+
+.member-profile.simplified .member-image img {
+    max-width: 180px; /* Increased image size for simplified profiles */
+    height: 180px; /* Increased image size for simplified profiles */
+    border-width: 2px; /* Thinner border */
+}
+
 
 .member-text {
-    flex-grow: 1;
+    flex: 2;
+    text-align: left;
 }
 
 .member-text h3 {
     margin-top: 0;
-    margin-bottom: 5px;
-    color: var(--color-primary); /* Member name uses new primary */
+    color: var(--color-primary);
+    font-size: 1.8em;
 }
 
 .member-role {
     font-weight: 600;
-    color: var(--color-secondary); /* Role uses new secondary */
+    color: var(--color-secondary);
     margin-bottom: 10px;
-    font-size: 0.95em;
+    font-style: italic;
 }
 
 .member-description {
-    font-size: 1em;
+    font-size: 0.95em;
+    line-height: 1.6;
 }
 
-/* Page Navigation Buttons */
-.page-navigation {
+.member-image {
+    flex: 1;
     text-align: center;
-    padding: 40px 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    background-color: var(--color-background-light);
-    transition: background-color var(--transition-speed);
+}
+
+.member-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    aspect-ratio: 1 / 1;
+    border: 3px solid var(--color-primary);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark Mode Adjustments for Member Profiles */
+body.dark-mode .member-profile {
+    background-color: var(--color-card-background-dark);
+    border-color: var(--color-border-dark);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .member-image img {
+    border-color: var(--color-secondary);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 /* Footer */
 footer {
-    background-color: var(--color-card-background-light);
+    background-color: var(--color-background-light);
     color: var(--color-text-light);
     text-align: center;
-    padding: 10px 0; /* Reduced padding for minimalist touch */
+    padding: 20px 0;
     border-top: 1px solid var(--color-border-light);
     font-size: 0.9em;
-    transition: background-color var(--transition-speed), border-color var(--transition-speed), color var(--transition-speed);
+    transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed);
+}
+
+body.dark-mode footer {
+    color: var(--color-text-dark);
 }
 
 footer p {
     margin: 5px 0;
-    font-size: 0.85em; /* Reduced font size for minimalist touch */
+}
+
+/* NEW: Automatic Horizontal Scrolling Image Section Styles */
+.image-scroller {
+    width: 100%;
+    overflow: hidden; /* Hides the overflowing content, preventing global horizontal scroll */
+    /* Changed background-color to transparent */
+    background-color: transparent;
+    /* Adjusted padding and margin-bottom to reduce vertical space to minimal */
+    padding: 0px 0; /* Reduced vertical padding to 0px */
+    margin-top: 0px; /* Reduced to 0px */
+    margin-bottom: 0px; /* Reduced to 0px */
+    /* Removed borders to make top/bottom transparent */
+    border-top: none;
+    border-bottom: none;
+    box-shadow: none; /* Removed box-shadow as it might create a visual line */
+    transition: background-color var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+body.dark-mode .image-scroller {
+    /* Changed background-color to transparent */
+    background-color: transparent;
+    border-color: var(--color-border-dark);
+    box-shadow: none; /* Removed box-shadow */
+}
+
+.scroller-inner {
+    display: flex;
+    white-space: nowrap; /* Ensures images stay in one line */
+    /* Hint to the browser that this element's transform will change, for smoother animation */
+    will-change: transform;
+    /* Animation: name, duration, timing-function, iteration-count */
+    /* Adjusted duration for 15 images to maintain similar speed */
+    animation: scroll-images 5s linear infinite; /* Adjusted from 60s to 5s */
+}
+
+.scroller-inner img {
+    flex-shrink: 0; /* Prevents images from shrinking */
+    width: 300px; /* Fixed width for images */
+    height: 200px; /* Fixed height for images */
+    object-fit: cover;
+    margin: 0 10px; /* Space between images */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, opacity 0.3s ease, transform 0.3s ease; /* Added transform for hover effect */
+    opacity: 0.8; /* Made images slightly transparent */
+    /* Add this for overlapping effect */
+    position: relative; /* Essential for z-index to work */
+    z-index: 1; /* Default z-index */
+    transform-origin: center center; /* Ensures zoom is centered */
+}
+
+body.dark-mode .scroller-inner img {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover effect for images in the scroller */
+.scroller-inner img:hover {
+    transform: scale(1.3); /* Zooms the image to 1.3x its size */
+    z-index: 10; /* Brings the hovered image to the front */
+    opacity: 1; /* Makes the hovered image fully opaque */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
 }
 
 
-/* Responsive Design */
+/* Keyframes for the scrolling animation */
+@keyframes scroll-images {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        /* Moves the content by half its total width to create a seamless loop
+           since the content is duplicated once within .scroller-inner */
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause animation on hover */
+.image-scroller:hover .scroller-inner {
+    animation-play-state: paused;
+}
+
+
+/* Responsive Adjustments */
 @media (max-width: 992px) {
     .desktop-nav {
         display: none;
@@ -743,110 +1058,50 @@ footer p {
     .menu-toggle {
         display: flex;
     }
-
     header .container {
-        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .site-title {
+        font-size: 1.5em;
+    }
+    .university-logo {
+        height: 40px;
     }
 
-    .logo-area {
-        flex-grow: 1;
-        justify-content: center;
+    /* Production team layout adjustment for larger screens (e.g., 2 columns) */
+    .content-section .simplified-members-grid {
+        gap: 20px; /* Reduce gap for slightly smaller screens */
     }
-    .menu-toggle {
-    }
-
-    .mobile-nav {
-        display: none;
-    }
-    .mobile-nav.open {
-        display: flex;
-    }
-
-    .hero-title {
-        font-size: 2.5em;
-    }
-    .hero .subtitle {
-        font-size: 1.2em;
-    }
-    .inner-page-hero h1 {
-        font-size: 2.5em;
-    }
-    .inner-page-hero .subtitle {
-        font-size: 1.1em;
-    }
-    .member-profile,
-    .member-profile:nth-child(even) {
-        flex-direction: column;
-        text-align: center;
-    }
-    .member-image {
-        margin-bottom: 20px;
-    }
-    .member-text {
-        text-align: center;
-    }
-    .page-navigation {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .page-navigation .button {
-        width: 80%;
+    .member-profile.simplified {
+        flex: 1 1 calc(50% - 10px); /* Adjust flex basis for 2 columns with smaller gap */
+        max-width: calc(50% - 10px);
     }
 }
 
 @media (max-width: 768px) {
-    .container {
-        padding: 15px;
-    }
-    h1 { font-size: 2.2em; }
-    h2 { font-size: 1.8em; }
-    h3 { font-size: 1.5em; }
-
     .hero {
-        padding: 80px 15px;
+        min-height: auto;
+        /* Adjusted padding-top for smaller screens to minimal */
+        padding: 0px 15px 0px 15px; /* Reduced padding-bottom to 0px */
     }
-    .hero-title {
-        font-size: 2em;
+    .hero h1 {
+        font-size: 2.2em;
     }
     .hero .subtitle {
-        font-size: 1em;
+        font-size: 1.1em;
     }
-    .hero .author-uni,
-    .hero .synopsis-logline {
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.7em; }
+    h3 { font-size: 1.3em; }
+    .page-title {
+        font-size: 2.5em;
+    }
+    .button {
+        padding: 10px 20px;
         font-size: 0.9em;
-    }
-    .hero-buttons {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .hero-buttons .button {
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    .introduction {
-        padding: 40px 0;
     }
     .introduction p {
         font-size: 1em;
-    }
-    .navigation-buttons {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .navigation-buttons .button {
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    .inner-page-hero {
-        padding: 60px 15px;
-    }
-    .inner-page-hero h1 {
-        font-size: 2em;
-    }
-    .inner-page-hero .subtitle {
-        font-size: 0.9em;
     }
 
     /* Responsive adjustments for member profiles */
@@ -874,11 +1129,36 @@ footer p {
     .member-role, .member-description {
         text-align: center;
     }
+
+    /* Responsive adjustments for scroller images */
+    .scroller-inner img {
+        width: 250px;
+        height: 170px;
+    }
+    /* Adjusted image scroller padding and margin for smaller screens to minimal */
+    .image-scroller {
+        padding: 0px 0; /* Reduced to 0px */
+        margin-bottom: 0px; /* Reduced to 0px */
+    }
+
+    /* Production team layout adjustment for tablets/smaller screens */
+    .content-section .simplified-members-grid {
+        gap: 15px; /* Further reduce gap */
+    }
+    .member-profile.simplified {
+        flex: 1 1 calc(50% - 7.5px); /* Adjust flex basis for 2 columns with smaller gap */
+        max-width: calc(50% - 7.5px);
+    }
+    .member-profile.simplified .member-image img {
+        max-width: 150px; /* Slightly smaller image on tablets */
+        height: 150px;
+    }
 }
 
 @media (max-width: 480px) {
     .hero {
-        padding: 30px 10px;
+        /* Adjusted padding-top for very small screens to minimal */
+        padding: 0px 10px 0px 10px; /* Reduced padding-bottom to 0px */
     }
     .hero h1 {
         font-size: 1.6em;
@@ -892,36 +1172,55 @@ footer p {
     }
     h1 { font-size: 1.8em; }
     h2 { font-size: 1.5em; }
-    h3 { font-size: 1.3em; }
-
-    .university-logo {
-        height: 30px;
+    h3 { font-size: 1.2em; }
+    .page-title {
+        font-size: 2em;
     }
-    .site-title {
-        font-size: 1.2em;
-    }
-    .mobile-nav {
-        width: 200px;
-    }
-
-    .hero-buttons .button,
-    .navigation-buttons .button,
-    .page-navigation .button {
-        width: 90%;
-        padding: 10px 15px;
-        font-size: 0.9em;
-    }
-
     .content-section {
-        padding: 30px 0;
+        padding: 20px;
     }
-    .content-section h2 {
-        font-size: 1.8em;
+    .button {
+        width: 100%;
+        margin-bottom: 10px;
     }
-    .gallery {
-        grid-template-columns: 1fr;
+    .navigation-buttons,
+    .page-navigation {
+        flex-direction: column;
+        gap: 10px;
     }
-    .image-placeholder img {
-        height: 180px;
+    /* Smaller button on very small screens */
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+        bottom: 15px;
+        right: 15px;
     }
-}
+    .university-logo {
+        height: 35px;
+    }
+
+    /* Responsive adjustments for scroller images */
+    .scroller-inner img {
+        width: 200px;
+        height: 130px;
+    }
+    .image-scroller {
+        padding: 0px 0; /* Reduced to 0px */
+        margin-top: 0px; /* Reduced to 0px */
+        margin-bottom: 0px; /* Reduced to 0px */
+    }
+
+    /* Production team layout adjustment for mobile */
+    .content-section .simplified-members-grid {
+        flex-direction: column; /* Stack vertically on very small screens */
+        gap: 10px;
+    }
+    .member-profile.simplified {
+        flex: 1 1 100%; /* Full width on mobile */
+        max-width: 100%;
+    }
+    .member-profile.simplified .member-image img {
+        max-width: 120px; /* Smaller image on mobile */
+        height: 120px;
+    }

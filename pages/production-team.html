@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalabaw sa Kubaw Kolektib - Production Team</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Basic styling for pagination controls */
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            gap: 10px;
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+        }
+
+        .pagination-button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .pagination-button:hover:not(.active):not(:disabled) {
+            background-color: #45a049;
+        }
+
+        .pagination-button.active {
+            background-color: #007bff; /* Blue for active page */
+            cursor: default;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .pagination-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        /* Original simplified-members-grid for 3 columns */
+        .simplified-members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Original minmax for 3 columns */
+            gap: 20px;
+            padding: 20px 0;
+            justify-content: center; /* Center items in the grid */
+        }
+
+        /* Original member-profile styling */
+        .member-profile.simplified {
+            display: flex;
+            flex-direction: column; /* Stack image on top of text */
+            align-items: center; /* Center items horizontally */
+            text-align: center; /* Center text */
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+            gap: 0; /* Remove gap for column layout */
+        }
+
+        .member-profile.simplified:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-image {
+            width: 180px; /* Fixed width */
+            height: 0; /* Set height to 0 */
+            padding-bottom: 180px; /* Use padding-bottom to create a square based on width */
+            border-radius: 50%; /* Keep circular image */
+            overflow: hidden;
+            margin-bottom: 10px; /* Add margin below image */
+            border: 3px solid #ddd;
+            position: relative; /* Needed for absolute positioning of img */
+        }
+
+        .member-image img {
+            position: absolute; /* Position img absolutely within the square container */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures image covers the area, cropping if necessary */
+        }
+
+        .member-text {
+            margin-top: 10px; /* Added margin for spacing */
+        }
+
+        .member-text h3 {
+            margin: 0;
+            font-size: 1.2em; /* Adjusted font size */
+            color: #333;
+        }
+
+        .member-text .member-role {
+            color: #777; /* Set color to a standard grey, common in original designs */
+            font-size: 0.9em; /* Adjusted font size to be slightly smaller than name */
+        }
+
+        /* Ensure the main content area has enough padding */
+        .page-content .container {
+            padding-bottom: 50px; /* Add space below pagination */
+        }
+    </style>
+</head>
+<body class="about-kolektib-background">
+    <header>
+        <div class="container">
+            <div class="logo-area">
+                <a href="https://www.pup.edu.ph" target="_blank" rel="noopener noreferrer">
+                    <img src="https://imgur.com/Jo8KGsk.png" alt="University Logo" class="university-logo">
+                </a>
+                <a href="../index.html" class="site-title">Kalabaw sa Kubaw Kolektib</a>
+            </div>
+
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="../index.html">Homepage</a></li>
+                    <li><a href="pre-production.html">Pre-Production</a></li>
+                    <li><a href="production.html">Production</a></li>
+                    <li><a href="post-production.html">Documentation & Archiving</a></li>
+                    <li><a href="about-collective.html">About the Kolektib</a></li>
+                </ul>
+            </nav>
+
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <nav class="mobile-nav" id="mobile-nav">
+            <ul>
+                <li><a href="../index.html">Homepage</a></li>
+                <li><a href="pre-production.html">Pre-Production</a></li>
+                <li><a href="production.html">Production</a></li>
+                <li><a href="post-production.html">Documentation & Archiving</a></li>
+                <li><a href="about-collective.html">About the Kolektib</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <button id="theme-toggle" class="theme-toggle">
+        <span class="icon-light">☀️</span>
+        <span class="icon-dark">🌙</span>
+    </button>
+
+    <main>
+        <section class="page-content">
+            <div class="container">
+                <h1 class="page-title">Production Team</h1>
+
+                <div class="content-section">
+                    <h2>Meet Our Dedicated Production Team</h2>
+                    <p>The individuals below are integral to bringing our theatrical visions to life, working tirelessly behind the scenes to ensure every aspect of our productions is executed flawlessly.</p>
+
+                    <div id="members-container" class="simplified-members-grid">
+                        </div>
+
+                    <div id="pagination-controls" class="pagination-controls">
+                        </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Kalabaw sa Kubaw Kolektib. All Rights Reserved.</p>
+            <p>Submitted as a thesis for Bachelor of Performing Arts, Major in Theater Arts.</p>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const membersContainer = document.getElementById('members-container');
+            const paginationControls = document.getElementById('pagination-controls');
+            const membersPerPage = 15; // Number of members to display per page
+            let currentPage = 1;
+
+            // Define all members, including the original 6 and 44 new placeholders (total 50)
+            const allMembersData = [
+                { name: "Koleen Alberio", role: "Ensemble", image: "https://imgur.com/xlA1Xxw.jpg" },
+                { name: "Fei Aranas", role: "Ensemble", image: "https://imgur.com/4GknzOr.jpg" },
+                { name: "Erica May Camacho", role: "Ensemble", image: "https://imgur.com/ZTlssBj.jpg" },
+                { name: "Aubrey Ga", role: "Ensemble", image: "https://imgur.com/NqmKEr0.jpg" },
+                { name: "Cyrile Hugo", role: "Ensemble", image: "https://imgur.com/uWpdpvw.jpg" },
+                { name: "Hashie Rodolfo", role: "Ensemble", image: "https://imgur.com/RLmwyjs.jpg" },
+                { name: "Analyn Marasigan", role: "Ensemble", image: "https://imgur.com/lV5zdyf.jpg" },
+                { name: "Riri Marinas", role: "Ensemble", image: "https://imgur.com/suz9DIK.jpg" },
+                { name: "Mico Napata", role: "Ensemble", image: "https://imgur.com/dxdHTGD.jpg" },
+                { name: "Meldrich Pilon", role: "Ensemble", image: "https://imgur.com/E8pbN50.jpg" },
+                { name: "Adrian Ramos", role: "Ensemble", image: "https://imgur.com/ZbesjAT.jpg" },
+                { name: "Lee Robert", role: "Ensemble", image: "https://imgur.com/szVxREl.jpg" },
+                { name: "Jiza Cinco", role: "Ensemble & Dance Captain", image: "https://imgur.com/GhdMpw9.jpg" },
+                { name: "Justine Lukban", role: "Assistant Director", image: "https://placehold.co/180x180/cccccc/333333?text=Member+14" },
+                { name: "Lander Lumagbas", role: "Assistant Director", image: "https://placehold.co/180x180/cccccc/333333?text=Member+15" },
+                { name: "Member 16", role: "Assistant Director", image: "https://placehold.co/180x180/cccccc/333333?text=Member+16" },
+                { name: "Member 17", role: "Stage Manager", image: "https://placehold.co/180x180/cccccc/333333?text=Member+17" },
+                { name: "Member 18", role: "Lighting Designer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+18" },
+                { name: "Member 19", role: "Sound Engineer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+19" },
+                { name: "Member 20", role: "Costume Designer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+20" },
+                { name: "Member 21", role: "Set Designer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+21" },
+                { name: "Member 22", role: "Volunteer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+22" },
+                { name: "Member 23", role: "Crew", image: "https://placehold.co/180x180/cccccc/333333?text=Member+23" },
+                { name: "Member 24", role: "Assistant Director", image: "https://placehold.co/180x180/cccccc/333333?text=Member+24" },
+                { name: "Member 25", role: "Stage Manager", image: "https://placehold.co/180x180/cccccc/333333?text=Member+25" },
+                { name: "Member 26", role: "Lighting Designer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+26" },
+                { name: "Member 27", role: "Sound Engineer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+27" },
+                { name: "Member 28", role: "Costume Designer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+28" },
+                { name: "Member 29", role: "Set Designer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+29" },
+                { name: "Member 30", role: "Volunteer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+30" },
+                { name: "Member 31", role: "Crew", image: "https://placehold.co/180x180/cccccc/333333?text=Member+31" },
+                { name: "Member 32", role: "Assistant Director", image: "https://placehold.co/180x180/cccccc/333333?text=Member+32" },
+                { name: "Member 33", role: "Stage Manager", image: "https://placehold.co/180x180/cccccc/333333?text=Member+33" },
+                { name: "Member 34", role: "Lighting Designer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+34" },
+                { name: "Member 35", role: "Sound Engineer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+35" },
+                { name: "Member 36", role: "Costume Designer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+36" },
+                { name: "Member 37", role: "Set Designer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+37" },
+                { name: "Member 38", role: "Volunteer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+38" },
+                { name: "Member 39", role: "Crew", image: "https://placehold.co/180x180/cccccc/333333?text=Member+39" },
+                { name: "Member 40", role: "Assistant Director", image: "https://placehold.co/180x180/cccccc/333333?text=Member+40" },
+                { name: "Member 41", role: "Stage Manager", image: "https://placehold.co/180x180/cccccc/333333?text=Member+41" },
+                { name: "Member 42", role: "Lighting Designer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+42" },
+                { name: "Member 43", role: "Sound Engineer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+43" },
+                { name: "Member 44", role: "Costume Designer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+44" },
+                { name: "Member 45", role: "Set Designer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+45" },
+                { name: "Member 46", role: "Volunteer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+46" },
+                { name: "Member 47", role: "Crew", image: "https://placehold.co/180x180/cccccc/333333?text=Member+47" },
+                { name: "Member 48", role: "Assistant Director", image: "https://placehold.co/180x180/cccccc/333333?text=Member+48" },
+                { name: "Member 49", role: "Stage Manager", image: "https://placehold.co/180x180/cccccc/333333?text=Member+49" },
+                { name: "Member 50", role: "Lighting Designer", image: "https://placehold.co/180x180/cccccc/333333?text=Member+50" }
+            ];
+
+            const totalPages = Math.ceil(allMembersData.length / membersPerPage);
+
+            /**
+             * Renders the members for a specific page.
+             * @param {number} page The page number to display.
+             */
+            function renderMembers(page) {
+                membersContainer.innerHTML = ''; // Clear current members
+                const startIndex = (page - 1) * membersPerPage;
+                const endIndex = startIndex + membersPerPage;
+                const membersToDisplay = allMembersData.slice(startIndex, endIndex);
+
+                membersToDisplay.forEach(member => {
+                    const memberProfile = document.createElement('div');
+                    memberProfile.classList.add('member-profile', 'simplified');
+                    memberProfile.innerHTML = `
+                        <div class="member-image">
+                            <img src="${member.image}" alt="${member.name}" onerror="this.onerror=null;this.src='https://placehold.co/180x180/cccccc/333333?text=${member.name.replace(/\s/g, '+')}';">
+                        </div>
+                        <div class="member-text">
+                            <h3>${member.name}</h3>
+                            <p class="member-role">${member.role}</p>
+                        </div>
+                    `;
+                    membersContainer.appendChild(memberProfile);
+                });
+            }
+
+            /**
+             * Renders the pagination controls (buttons).
+             */
+            function renderPagination() {
+                paginationControls.innerHTML = ''; // Clear current pagination controls
+
+                // Previous button
+                const prevButton = document.createElement('button');
+                prevButton.classList.add('pagination-button');
+                prevButton.textContent = 'Previous';
+                prevButton.disabled = currentPage === 1;
+                prevButton.addEventListener('click', () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        renderMembers(currentPage);
+                        renderPagination();
+                    }
+                });
+                paginationControls.appendChild(prevButton);
+
+                // Page number buttons
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageButton = document.createElement('button');
+                    pageButton.classList.add('pagination-button');
+                    pageButton.textContent = i;
+                    if (i === currentPage) {
+                        pageButton.classList.add('active');
+                    }
+                    pageButton.addEventListener('click', () => {
+                        currentPage = i;
+                        renderMembers(currentPage);
+                        renderPagination();
+                    });
+                    paginationControls.appendChild(pageButton);
+                }
+
+                // Next button
+                const nextButton = document.createElement('button');
+                nextButton.classList.add('pagination-button');
+                nextButton.textContent = 'Next';
+                nextButton.disabled = currentPage === totalPages;
+                nextButton.addEventListener('click', () => {
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        renderMembers(currentPage);
+                        renderPagination();
+                    }
+                });
+                paginationControls.appendChild(nextButton);
+            }
+
+            // Initial render of members and pagination
+            renderMembers(currentPage);
+            renderPagination();
+
+            // Mobile navigation toggle (assuming script.js handles this, but including for completeness)
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileNav = document.getElementById('mobile-nav');
+
+            if (menuToggle && mobileNav) {
+                menuToggle.addEventListener('click', () => {
+                    mobileNav.classList.toggle('active');
+                    menuToggle.classList.toggle('active');
+                });
+            }
+
+            // Theme toggle (assuming script.js handles this, but including for completeness)
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    document.body.classList.toggle('dark-theme');
+                    // You might want to save this preference in localStorage
+                });
+            }
+        });
+    </script>
+</body>
+</html>
